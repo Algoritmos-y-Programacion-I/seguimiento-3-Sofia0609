@@ -2,32 +2,38 @@ package model;
 
 public class SchoolController {
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Agregue los atributos (relaciones) necesarios para satisfacer los
-     * requerimientos.
-     */
+    int[][] matrizComputers = new int[5][5];
 
-    public SchoolController() {
+    public SchoolController(int[][] matrizComputers) {
+        this matrizComputers = matrizComputers;
+    }
+
+   
+    public void agregarComputador(String serialNumber, boolean nextWindow) {
+
+        for(int i = 0; i < matrizComputers.length; i++) {
+            for(int j = 0; j < matrizComputers[0].length; j++) {
+
+                Computer nComputer = new Computer(serialNumber, nextWindow)
+                matrizComputers[i][j] = nComputer;
+            }
+        }
 
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Los siguientes metodos estan incompletos.
-     * Añada los metodos que considere hagan falta para satisfacer los
-     * requerimientos.
-     * Para cada metodo:
-     * Agregue los parametros y retorno que sean pertinentes.
-     * Agregue la logica necesaria (instrucciones) para satisfacer los
-     * requerimientos.
-     */
-    public void agregarComputador() {
+    public void agregarIncidenteEnComputador(String serialNumber, String descripcion, LocalDate dateReport) {
 
-    }
+        for(int i = 0; i < matrizComputers.length; i++) {
+            for(int j = 0; j < matrizComputers[0].length; j++) {
 
-    public void agregarIncidenteEnComputador() {
+                if (matrizComputers[i][j] != null){
+                    if ( serialNumber.equals(matrizComputers[i][j].getSerialNumber())){
+                        addIncident(descripcion, dateReport);
+                    }
+                }
 
+            }
+        }
     }
 
     public void getComputerList() {

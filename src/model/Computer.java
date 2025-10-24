@@ -1,25 +1,36 @@
 package model;
+import java.util.ArrayList;  
+import model.Incident;
 
 public class Computer {
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Agregue los atributos (relaciones) necesarios para satisfacer los
-     * requerimientos.
-     */
+    String serialNumber;
+    boolean nextWindow;
+    ArrayList<Incident> incidents = ArrayList<Incident>;
 
-    public Computer() {
-
+    public Computer(String serialNumber, boolean nextWindow) {
+        this.serialNumber = serialNumber;
+        this.nextWindow = nextWindow;
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * El siguiente metodo esta incompleto.
-     * Agregue los parametros y retorno que sean pertinentes.
-     * Agregue la logica necesaria.
-     */
-    public void addIncident() {
-
+    public String getSerialNumber() { 
+        return serialNumber; 
     }
 
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public boolean getNextWindow() { 
+        return nextWindow; 
+    }
+
+    public void setNextWindow(boolean nextWindow) {
+        this.nextWindow = nextWindow;
+    }
+
+    public void addIncident(String descripcion, LocalDate dateReport) {
+        Incident nIncident = new Incident(descripcion, dateReport);
+        incidents.add(nIncident);     
+    }
 }
