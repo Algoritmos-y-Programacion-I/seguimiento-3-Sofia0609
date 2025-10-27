@@ -10,7 +10,7 @@ public class Incident{
 
     public Incident(String descripcion, LocalDate dateReport) {
         this.descripcion = descripcion;
-        this dateReport = dateReport;s
+        this.dateReport = dateReport;
     }
 
     public String getDescripcion() { 
@@ -21,15 +21,15 @@ public class Incident{
         this.descripcion = descripcion;
     }
 
-    public String getDateReport() { 
+    public LocalDate getDateReport() { 
         return dateReport; 
     }
 
     public void setDateReport(LocalDate dateReport) {
-        this dateReport = dateReport;
+        this.dateReport = dateReport;
     }
 
-    public String getSolution() { 
+    public boolean getSolution() { 
         return solution; 
     }
 
@@ -37,7 +37,7 @@ public class Incident{
         this.solution = solution;
     }
 
-    public String getSolutionHour() { 
+    public int getSolutionHour() { 
         return solutionHour; 
     }
 

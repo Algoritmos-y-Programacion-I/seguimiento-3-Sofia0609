@@ -1,6 +1,8 @@
 package ui;
 
 import java.util.Scanner;
+import model.SchoolController;
+import java.util.ArrayList;  
 
 public class SchoolApp {
 
@@ -11,6 +13,7 @@ public class SchoolApp {
      */
 
     private Scanner input;
+    private SchoolController controller;
 
     public static void main(String[] args) {
 
@@ -22,14 +25,9 @@ public class SchoolApp {
     // Constructor
     public SchoolApp() {
         input = new Scanner(System.in);
+        this.controller = new SchoolController("controller");
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * El siguiente metodo esta incompleto.
-     * Agregue la logica necesaria (instrucciones) para satisfacer los
-     * requerimientos
-     */
 
     public void menu() {
 
@@ -45,6 +43,7 @@ public class SchoolApp {
             System.out.println("3) Consultar el computador con más incidentes");
             System.out.println("0) Salir del sistema");
             option = input.nextInt();
+            input.nextLine();
 
             switch (option) {
                 case 1:
@@ -68,22 +67,74 @@ public class SchoolApp {
 
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Los siguientes metodos estan incompletos.
-     * Agregue la logica necesaria (instrucciones) para satisfacer los
-     * requerimientos
-     */
-
     public void registrarComputador() {
 
+        int ok = 1;
+        boolean nextWindow = false;
+
+        System.out.println("=== Registrar Computador ===");
+
+        System.out.println("Por favor ingresa el numero de piso");
+        int piso = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Por favor ingresa el el numero de Serie del Computer");
+        String serialNumber = input.nextLine();
+
+        while (ok == 1){
+            
+            System.out.println("Por favor ingrese el next window (T/F)");
+            String stringnextWindow = input.nextLine();
+
+                if (stringnextWindow.equals("T")){
+                    nextWindow = true;
+                    ok = 0;
+                }else if (stringnextWindow.equals("F")){
+                    nextWindow = false;
+                    ok = 0;
+                }else{
+                    System.out.println("Ingrese un valor Valido");
+                }
+            
+        }
+
+        
+            String nComputer = controller.agregarComputador(piso, serialNumber, nextWindow);
+            System.out.println(nComputer);
     }
 
     public void registrarIncidenteEnComputador() {
 
+        System.out.println("===Registrar Incidentes en un Computador===");
+
+        System.out.println("Por favor ingresa el el numero de Serie del Computer");
+            String serialNumber = input.nextLine();
+
+            System.out.println("Por favor ingrese la descripcion del incidente");
+            String descripcion = input.nextLine();
+
+            System.out.println("Por favor ingrese el año del incidente");
+            int año = input.nextInt();
+            input.nextLine();
+            
+            System.out.println("Por favor ingrese el mes del incidente");
+            int mes = input.nextInt();
+            input.nextLine();
+
+            System.out.println("Por favor ingrese el dia del incidente");
+            int dia = input.nextInt();
+            input.nextLine();
+
+            String nIncident = controller.agregarIncidenteEnComputador(serialNumber, descripcion, año, mes, dia);
+            System.out.println(nIncident);
+
     }
 
     public void consultarComputadorConMasIncidentes() {
+
+        System.out.println("===Computador con mas Incidentes===");
+        String computadorMasIncidentes = controller.ComputadorconmasIncidentes();
+        System.out.println("El computador con mas incidentes es: " + computadorMasIncidentes);
 
     }
 

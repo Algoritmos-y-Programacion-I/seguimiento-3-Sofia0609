@@ -1,12 +1,13 @@
 package model;
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.time.LocalDate; 
 import model.Incident;
 
 public class Computer {
 
     String serialNumber;
     boolean nextWindow;
-    ArrayList<Incident> incidents = ArrayList<Incident>;
+    ArrayList<Incident> incidents = new ArrayList<>();
 
     public Computer(String serialNumber, boolean nextWindow) {
         this.serialNumber = serialNumber;
@@ -27,6 +28,10 @@ public class Computer {
 
     public void setNextWindow(boolean nextWindow) {
         this.nextWindow = nextWindow;
+    }
+
+    public ArrayList<Incident> getIncidents(){
+        return incidents;
     }
 
     public void addIncident(String descripcion, LocalDate dateReport) {
